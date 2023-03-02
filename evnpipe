@@ -9,14 +9,14 @@ pipeline{
                 stage ('biuld-1'){
                     agent{label 'node1'}
                     steps{
-                        echo "this is parallel build-1\n
+                        echo "this is parallel build-1"\n"
                         and this stage build $created"
                     }
                 }
                 stage ('biuld-2'){
                     agent{label 'node2'}
                     steps{
-                        echo "this is parallel build-2\n
+                        echo "this is parallel build-2"\n"
                         and this stage build $created"
                     }
                 }
@@ -27,13 +27,13 @@ pipeline{
             parallel{
                 stage ('test-1'){
                     steps{
-                        echo "this is parallel test-1\n
+                        echo "this is parallel test-1"\n"
                         and this stage created $created"
                     }
                 }
                 stage ('test-2'){
                     steps{
-                        echo "this is parallel test-2\n
+                        echo "this is parallel test-2"\n"
                         and this stage created $created"
                     }
                 }
@@ -43,13 +43,13 @@ pipeline{
             parallel{
                 stage ('test-1'){
                     steps{
-                        echo "this is test-1 parallel\n
+                        echo "this is test-1 parallel"\n"
                         and this stage created $created"
                     }
                 }
                  stage ('test-2'){
                     steps{
-                        echo "this is test-2 parallel\n
+                        echo "this is test-2 parallel"\n"
                         and this stage created $created"
                     }
                 }
