@@ -1,0 +1,59 @@
+pipeline{
+    agent any
+    environment {
+        created = "by naveen"
+    }
+    stages{
+        stage ('parallel build') {
+            parallel{
+                stage ('biuld-1'){
+                    agent{label 'node1'}
+                    steps{
+                        echo "this is parallel build-1
+                        and this stage build $created"
+                    }
+                }
+                stage ('biuld-2'){
+                    agent{label 'node2'}
+                    steps{
+                        echo "this is parallel build-2
+                        and this stage build $created"
+                    }
+                }
+            }
+
+        }
+        stage ('parallel deploy'){
+            parallel{
+                stage ('test-1'){
+                    steps{
+                        echo "this is parallel test-1
+                        and this stage created $created"
+                    }
+                }
+                stage ('test-2'){
+                    steps{
+                        echo "this is parallel test-2
+                        and this stage created $created"
+                    }
+                }
+            }
+        }
+        stage ('test parallel'){
+            parallel{
+                stage ('test-1'){
+                    steps{
+                        echo "this is test-1 parallel
+                        and this stage created $created"
+                    }
+                }
+                 stage ('test-2'){
+                    steps{
+                        echo "this is test-2 parallel
+                        and this stage created $created"
+                    }
+                }
+            }
+        }
+    }
+}
